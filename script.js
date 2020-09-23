@@ -1,7 +1,7 @@
 var pole = document.getElementById("pole");
 var entry = document.getElementById("entry");
 var player = document.getElementById("player");
-var fly = 0;
+var flying = 0;
 
 entry.addEventListener('animationiteration', () => {
     var any = -((Math.random()*300)+150);
@@ -11,9 +11,26 @@ entry.addEventListener('animationiteration', () => {
 setInterval(function(){
     var playerTop =
     parseInt (window.getComputedStyle(player).getPropertyValue("top"));
-    player.style.top = (playerTop+3)+"px";
+    if(flying==0){
+     player.style.top = (playerTop+3)+"px";
+    }
 },10);
 
 function fly(){
-    flying = 1;
+    flying = 5;
+    let flyCount = 0;
+    var flyInterval = setInterval(function(){
+        var playerTop =
+        parseInt (window.getComputedStyle(player).getPropertyValue("top"));
+        if(playerTop>6){
+            player.style.top = (playerTop-5)+"px";
+        }
+       
+        if(flyCount>20){
+            clearInterval(flyInterval)
+            flying=0;
+            flyCount=0;
+        }
+        flyCount++;
+    },10);
 }
