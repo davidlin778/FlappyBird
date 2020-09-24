@@ -23,7 +23,7 @@ setInterval(function(){
     var entryTop = 
     parseInt (window.getComputedStyle(entry).getPropertyValue("top"));
     var pTop = -(500-playerTop);
-    if((playerTop>480)||((poleLeft<50)&&(poleLeft>-50)&&((pTop<entryTop)||(pTop>entryTop+130)))){
+    if((playerTop>480)||((poleLeft<50)&&(poleLeft>-30)&&((pTop<entryTop)||(pTop>entryTop+130)))){
         alert("Game over. Score: " + (score-1) );
         player.style.top = 100 + "px";
         score = 0;
